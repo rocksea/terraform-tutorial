@@ -1,6 +1,11 @@
+#module "vpc" {
+#  source = "./vpc"
+#}
+
+
 resource "aws_security_group" "rocksea-sg" {
 
-  vpc_id = aws_vpc.rocksea-vpc.id
+  vpc_id = module.vpc.vpc_id
   name = "ROCKSEA-SG"
 
   tags = {
@@ -11,7 +16,7 @@ resource "aws_security_group" "rocksea-sg" {
 
 resource "aws_security_group" "app-svr-sg" {
 
-  vpc_id = aws_vpc.rocksea-vpc.id
+  vpc_id = module.vpc.vpc_id
   name = "APP-SVR-SG"
 
   ingress {
