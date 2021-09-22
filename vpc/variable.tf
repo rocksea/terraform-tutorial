@@ -85,7 +85,7 @@ locals {
         from_port   = 1433
         to_port     = 1433
         protocol    = "tcp"
-        cidr_block  = "10.0.100.0/22"
+        cidr_block  = "0.0.0.0/0"
       },
       {
         rule_number = 130
@@ -93,7 +93,7 @@ locals {
         from_port   = 22
         to_port     = 22
         protocol    = "tcp"
-        cidr_block  = "10.0.100.0/22"
+        cidr_block  = "0.0.0.0/0"
       },
       {
         rule_number = 140
@@ -101,7 +101,7 @@ locals {
         icmp_code   = -1
         icmp_type   = 8
         protocol    = "icmp"
-        cidr_block  = "10.0.0.0/22"
+        cidr_block  = "0.0.0.0/0"
       },
       {
         rule_number     = 150
@@ -135,7 +135,7 @@ locals {
         icmp_code   = -1
         icmp_type   = 12
         protocol    = "icmp"
-        cidr_block  = "10.0.0.0/22"
+        cidr_block  = "0.0.0.0/0"
       },
       {
         rule_number     = 150

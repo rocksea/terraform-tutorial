@@ -12,6 +12,16 @@ $ terraform plan
 $ terraform apply
 ```
 
+### Installing AWS CLI on MacOS
+```
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+sudo installer -pkg AWSCLIV2.pkg -target /
+```
+
+### Terraform Modules
+- [VPC](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest)
+- [ElasticBeanstalk](https://registry.terraform.io/modules/cloudposse/elastic-beanstalk-environment/aws/latest)
+
 ### Find AMI 
 You must select an AMI to launch EC2 Instance.
 [A link to find AMIs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html)
