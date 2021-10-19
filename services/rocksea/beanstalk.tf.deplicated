@@ -1,0 +1,32 @@
+module "beanstalk" {
+  source = "../../modules/beanstalk"
+  app_env = local.app_env
+
+  app_name = "api"
+  autoscale_max = 4
+  instance_type = "t3.micro"
+  name = "rocksea"
+  namespace = "rocksea"
+
+  private_subnet_ids = module.vpc.private_subnets
+  public_subnet_ids = module.vpc.public_subnets
+
+  region = local.region
+  stage = local.env
+  vpc_id = module.vpc.vpc_id
+  healthcheck_url = "/healths"
+  additional_settings = [
+    {
+      namespace = "aws:elasticbeanstalk:environment:process:default"
+      name      = "StickinessEnabled"
+      value     = "false"
+    },
+    {
+      namespace = "aws:elasticbeanstalk:managedactions"
+      name      = "ManagedActionsEnabled"
+      value     = "false"
+    }
+  ]
+
+  availability_zones = ["ap-northeast-2a", "ap-northeast-2c"]
+}

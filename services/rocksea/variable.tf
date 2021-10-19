@@ -1,4 +1,9 @@
 locals {
+  region = "ap-northeast-2"
+  app_env = {
+    ENV = "DEV"
+  }
+  env = terraform.workspace
   network_acls = {
     default_inbound = [
       {

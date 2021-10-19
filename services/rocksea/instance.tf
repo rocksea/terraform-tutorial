@@ -2,7 +2,7 @@ variable "key_pair" {
   default = "rocksea-bastion"
 }
 
-resource "aws_instance" "app-svr" {
+resource "aws_instance" "rocksea-bastion" {
     ami = "ami-04876f29fd3a5e8ba"
     instance_type = "t2.micro"
     subnet_id = module.vpc.private_subnets[0]
@@ -11,9 +11,9 @@ resource "aws_instance" "app-svr" {
         aws_security_group.app-svr-sg.id
     ]
     key_name = "${var.key_pair}"
-    count = 3
+    count = 1
     tags = {
-        Name = "appSvr"
+        Name = "rocksea-bastion"
     }
 }
 

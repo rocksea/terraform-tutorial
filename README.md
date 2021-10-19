@@ -1,7 +1,7 @@
 # Terraform 
 Terraform is Infrastructure as Code for Managing infrastructure.
 
-### Command
+### Commands
 The commands are divided into three steps.
 
 ```
@@ -10,6 +10,13 @@ $ terraform init
 $ terraform plan
 
 $ terraform apply
+```
+
+Switching workspace
+```
+terraform workspace new dev
+terraform workspace show
+terraform workspace list
 ```
 
 ### Installing AWS CLI on MacOS
@@ -21,6 +28,7 @@ sudo installer -pkg AWSCLIV2.pkg -target /
 ### Terraform Modules
 - [VPC](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest)
 - [ElasticBeanstalk](https://registry.terraform.io/modules/cloudposse/elastic-beanstalk-environment/aws/latest)
+- [ElasticBeanstalk supported platforms](https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html#platforms-supported.docker)
 
 ### Find AMI 
 You must select an AMI to launch EC2 Instance.
