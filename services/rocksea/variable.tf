@@ -1,7 +1,7 @@
 locals {
   region = "ap-northeast-2"
   app_env = {
-    ENV = "DEV"
+    ENV = terraform.workspace
   }
   env = terraform.workspace
   network_acls = {

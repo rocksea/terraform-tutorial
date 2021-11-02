@@ -3,21 +3,10 @@
 #}
 
 
-resource "aws_security_group" "rocksea-sg" {
+resource "aws_security_group" "ssl-sg" {
 
   vpc_id = module.vpc.vpc_id
-  name = "ROCKSEA-SG"
-
-  tags = {
-    Name = "ROCKSEA-SG"
-    Project = "ROCKSEA"
-  }
-}
-
-resource "aws_security_group" "app-svr-sg" {
-
-  vpc_id = module.vpc.vpc_id
-  name = "APP-SVR-SG"
+  name = "ssl-sg"
 
   ingress {
     description      = "HTTP from external"
@@ -28,6 +17,16 @@ resource "aws_security_group" "app-svr-sg" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
+  tags = {
+    Name = "SSL-SG"
+  }
+}
+
+resource "aws_security_group" "http-sg" {
+
+  vpc_id = module.vpc.vpc_id
+  name = "http-sg"
+
   ingress {
     description      = "HTTP from external"
     from_port        = 80
@@ -36,6 +35,24 @@ resource "aws_security_group" "app-svr-sg" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "HTTP-SG"
+  }
+}
+
+resource "aws_security_group" "https-sg" {
+
+  vpc_id = module.vpc.vpc_id
+  name = "https-sg"
 
   ingress {
     description      = "TLS from external"
@@ -55,7 +72,6 @@ resource "aws_security_group" "app-svr-sg" {
   }
 
   tags = {
-    Name = "APP-SVR-SG"
-    Project = "ROCKSEA"
+    Name = "HTTPS-SG"
   }
 }
