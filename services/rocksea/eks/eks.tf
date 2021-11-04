@@ -1,3 +1,8 @@
+module "rocksea" {
+  source       = "../"
+}
+
+
 data "aws_eks_cluster" "eks" {
   name = module.eks.cluster_id
 }
@@ -17,13 +22,15 @@ module "eks" {
 
   cluster_version = "1.21"
   cluster_name    = "larambla-cluster"
-  vpc_id          = module.vpc.vpc_id
-  subnets         = module.vpc.private_subnets
+  vpc_id          = module.rocksea.vpc_id
+  subnets         = module.rocksea.private_subnets
 
   worker_groups = [
     {
-      instance_type = "t3.micro"
-      asg_max_size  = 3
+      instance_type = "t3a.large"
+      asg_desired_capacity = 3
+      asg_min_size         = 3
+      asg_max_size         = 5
     }
   ]
 }

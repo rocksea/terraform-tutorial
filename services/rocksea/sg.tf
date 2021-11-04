@@ -1,8 +1,3 @@
-#module "vpc" {
-#  source = "./vpc"
-#}
-
-
 resource "aws_security_group" "ssl-sg" {
 
   vpc_id = module.vpc.vpc_id
